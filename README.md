@@ -1,2 +1,14 @@
 # alkfejl1
-This is a repo for Alkalmazások fejlesztése 1. project
+
+***
+
+## Feladatleírás
+blabla
+
+## Funkcionális követelmények
+* köv1
+* köv2
+## Nem funkcionális követelmények
+* Felhasználóbarát, ergonomikus elrendezés és kinézet.
+* Gyors működés.
+* Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés.
