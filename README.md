@@ -1,5 +1,8 @@
 ﻿# Alkalmazások fejlesztése beadandó
 
+
+#### Madarász Gergely
+#### Kelemen András
 ***
 
 ## Feladatleírás
