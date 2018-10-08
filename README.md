@@ -16,6 +16,8 @@ is hozzáférést biztosíthatnak.
 	- Jegyzethez felhasználók hozzárendelése
 	- Jegyzetek, jegyzet csoportok böngészése
 	- Keresés a jegyzetek között 
+	- Jegyzetek sorbarendezése fontosság szerint
+	- Jegyzetek szűrése, listázása kategória (csoport) szerint
 
 ## Nem funkcionális követelmények
 * Felhasználóbarát, ergonomikus elrendezés és kinézet.
