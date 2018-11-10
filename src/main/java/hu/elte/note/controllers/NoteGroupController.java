@@ -25,6 +25,7 @@ import hu.elte.note.repositories.GroupRepository;
 import hu.elte.note.entities.NoteGroup;
 import hu.elte.note.entities.User;
 import hu.elte.note.entities.Note;
+import hu.elte.note.security.AuthenticatedUser;
 //import hu.elte.note.security.AuthenticatedUser;
 import java.util.Optional;
 
@@ -36,23 +37,23 @@ public class NoteGroupController {
     @Autowired
     private GroupRepository noteGroupRepository;
     
-    //@Autowired
-    //private AuthenticatedUser authenticatedUser;
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
     
     //@Autowired
     //private NoteRepository noteRepository;
     
     @GetMapping("")
     public ResponseEntity<Iterable<NoteGroup>> getAll() {
-        //User user = authenticatedUser.getUser();
-        //User.Role role = user.getRole();
-        //if (role.equals(User.Role.ROLE_ADMIN)) {
+        User user = authenticatedUser.getUser();
+        User.Role role = user.getRole();
+        if (role.equals(User.Role.ROLE_ADMIN)) {
             return ResponseEntity.ok(noteGroupRepository.findAll());
-        //}
-        //else
-        //{
-        //    return ResponseEntity.ok(noteGroupRepository.findAllByUser(user));
-        //}
+        }
+        else
+        {
+            return ResponseEntity.ok(noteGroupRepository.findAllByUser(user));
+        }
     }
     
     @GetMapping("/{id}")
@@ -72,8 +73,8 @@ public class NoteGroupController {
     @PostMapping("")
     public ResponseEntity<NoteGroup> post(@RequestBody NoteGroup noteGroup)
     {
-        //User user = authenticatedUser.getUser();
-        //group.setUser(user);
+        User user = authenticatedUser.getUser();
+        noteGroup.setUser(user);
         NoteGroup savedGroup = noteGroupRepository.save(noteGroup);
         return ResponseEntity.ok(savedGroup);
     }
