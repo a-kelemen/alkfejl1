@@ -26,6 +26,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 import java.util.List;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 @Data
@@ -36,18 +38,27 @@ public class Note {
     
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Integer groupId;
+    private Integer noteId;
     
     @Column
     @NotNull
-    private String groupName;
+    private String noteText;
     
+    @Column
+    @NotNull
+    private Integer noteImportance;
+    
+    @Column
+    @NotNull
+    private boolean noteIsActual;
     
     @ManyToOne
     @JoinColumn
     @JsonIgnore
     private NoteGroup noteGroup;
     
+    @ManyToMany
+    @JoinTable
+    private List<Label> labels;
     
-
 }
