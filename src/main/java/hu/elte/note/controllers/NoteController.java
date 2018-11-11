@@ -157,7 +157,7 @@ public class NoteController {
             return ResponseEntity.notFound().build();
         }
     }
-        
+     /*   
     @GetMapping("/{id}/notegroup")
     public ResponseEntity<NoteGroup> noteGroup
         (@PathVariable Integer id) {
@@ -184,5 +184,5 @@ public class NoteController {
         }
     }
     
-    
+    */
 }

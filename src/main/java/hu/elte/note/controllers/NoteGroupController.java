@@ -109,7 +109,7 @@ public class NoteGroupController {
         }
     }
     
-    /*@GetMapping("/{id}/notes")
+    @GetMapping("/{id}/notes")
     public ResponseEntity<Iterable<Note>> getNote(@PathVariable Integer id)
     {
         Optional<NoteGroup> noteGroup = noteGroupRepository.findById(id);
@@ -123,14 +123,6 @@ public class NoteGroupController {
         }
     }
     
-    @PostMapping("/{id}/notes")
-    public ResponseEntity<Note> newNote(@PathVariable Integer id, @RequestBody Note note)
-    {
-        Optional<NoteGroup> oNoteGroup = noteGroupRepository.findById(id);
-        if (oNoteGroup.isPresent())
-        {
-            noteRepository.
-        }
-    }
-*/
+
+
 }

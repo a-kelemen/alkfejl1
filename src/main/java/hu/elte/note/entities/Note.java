@@ -11,6 +11,7 @@ package hu.elte.note.entities;
  */
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -28,6 +29,7 @@ import lombok.Data;
 import java.util.List;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Data
@@ -42,6 +44,10 @@ public class Note {
     
     @Column
     @NotNull
+    private String noteTitle;
+    
+    @Column
+    @NotNull
     private String noteText;
     
     @Column
@@ -51,6 +57,10 @@ public class Note {
     @Column
     @NotNull
     private boolean noteIsActual;
+    
+    @Column
+    @CreationTimestamp
+    private LocalDateTime created_at;
     
     @ManyToOne
     @JoinColumn
