@@ -50,6 +50,11 @@ jegyzetek hátra vannak sorolva
 * **Felhasználó**: A saját jegyzeteit tudja olvasni és módosítani, illetve olyan jegyzeteket olvasni, 
 amikhez hozzá lett rendelve
 
+## Használati eset diagram
+![usecase](https://github.com/a-kelemen/alkfejl1/blob/master/usecase.png)
+
+## Adatbázis
+![adatbazis](https://github.com/a-kelemen/alkfejl1/blob/master/database.png)
 
 ## Végpontok
 
@@ -75,4 +80,9 @@ amikhez hozzá lett rendelve
 	- POST /labels/{id}
 	- PUT /labels/{id}
 	- DELETE /labels/{id}
+	
+## Könyvtárstruktúra
+![konyvtarstruktura](https://github.com/a-kelemen/alkfejl1/blob/master/konyvtarszerkezet.jpg)
 
+## Osztálydiagram
+![uml_diagram](https://github.com/a-kelemen/alkfejl1/blob/master/uml.png)
