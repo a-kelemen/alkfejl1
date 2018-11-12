@@ -53,46 +53,26 @@ amikhez hozzá lett rendelve
 
 ## Végpontok
 
-GET /notegroups Jegyzetcsoportok lekérése
-
-POST /notegroups Új jegyzetcsoportot hozhatunk létre
-		
-PUT /notegroups Jegyzetcsoport nevének megváltoztatása
-
-DELETE /notegroups Jegyzetcsoport törlése
-
-
-GET /notegroups/{id}/notes Jegyzetcsoporthoz tartozó jegyzetek lekérése
-
-
-
-POST /notes Új jegyzet felvétele
-
-PUT /notes Jegyzet módosítása
-
-DELETE /notes Jegyzet végleges törlése (nem kell?)
-
-GET /notes/{id}/labels Jegyzethez tartozó cimkék lekérése
-
-POST /notes/{id}/labels Új cimke felvétele a jegyzethez
-
-PUT /notes/{id}/labels (nem kell?)
-
-
-
-GET /users Felhasználók lekérése
-
-POST /users/register Új felhasználó regisztrálása
-
-POST /users/login Bejelentkezés
-
-
-
-GET /labels Összes cimke lekérése
-
-POST /labels/{id} (nem kell?)
-
-PUT /labels/{id} (nem kell?)
-
-DELETE /labels/{id} (nem kell?)
+* NoteGroup
+	- GET /notegroups Jegyzetcsoportok lekérése
+	- POST /notegroups Új jegyzetcsoportot hozhatunk létre	
+	- PUT /notegroups Jegyzetcsoport nevének megváltoztatása
+	- DELETE /notegroups Jegyzetcsoport törlése
+	- GET /notegroups/{id}/notes Jegyzetcsoporthoz tartozó jegyzetek lekérése
+* Note
+	- POST /notes Új jegyzet felvétele
+	- PUT /notes Jegyzet módosítása
+	- DELETE /notes Jegyzet végleges törlése
+	- GET /notes/{id}/labels Jegyzethez tartozó cimkék lekérése
+	- POST /notes/{id}/labels Új cimke felvétele a jegyzethez
+	- PUT /notes/{id}/labels
+* User
+	- GET /users Felhasználók lekérése
+	- POST /users/register Új felhasználó regisztrálása
+	- POST /users/login Bejelentkezés
+* Label
+	- GET /labels Összes cimke lekérése
+	- POST /labels/{id}
+	- PUT /labels/{id}
+	- DELETE /labels/{id}
 
