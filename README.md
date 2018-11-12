@@ -50,49 +50,39 @@ jegyzetek hátra vannak sorolva
 * **Felhasználó**: A saját jegyzeteit tudja olvasni és módosítani, illetve olyan jegyzeteket olvasni, 
 amikhez hozzá lett rendelve
 
+## Használati eset diagram
+![usecase](https://github.com/a-kelemen/alkfejl1/blob/master/usecase.png)
+
+## Adatbázis
+![adatbazis](https://github.com/a-kelemen/alkfejl1/blob/master/database.png)
 
 ## Végpontok
 
-GET /notegroups Jegyzetcsoportok lekérése
+* NoteGroup
+	- GET /notegroups Jegyzetcsoportok lekérése
+	- POST /notegroups Új jegyzetcsoportot hozhatunk létre	
+	- PUT /notegroups Jegyzetcsoport nevének megváltoztatása
+	- DELETE /notegroups Jegyzetcsoport törlése
+	- GET /notegroups/{id}/notes Jegyzetcsoporthoz tartozó jegyzetek lekérése
+* Note
+	- POST /notes Új jegyzet felvétele
+	- PUT /notes Jegyzet módosítása
+	- DELETE /notes Jegyzet végleges törlése
+	- GET /notes/{id}/labels Jegyzethez tartozó cimkék lekérése
+	- POST /notes/{id}/labels Új cimke felvétele a jegyzethez
+	- PUT /notes/{id}/labels
+* User
+	- GET /users Felhasználók lekérése
+	- POST /users/register Új felhasználó regisztrálása
+	- POST /users/login Bejelentkezés
+* Label
+	- GET /labels Összes cimke lekérése
+	- POST /labels/{id}
+	- PUT /labels/{id}
+	- DELETE /labels/{id}
+	
+## Könyvtárstruktúra
+![konyvtarstruktura](https://github.com/a-kelemen/alkfejl1/blob/master/konyvtarszerkezet.jpg)
 
-POST /notegroups Új jegyzetcsoportot hozhatunk létre
-		
-PUT /notegroups Jegyzetcsoport nevének megváltoztatása
-
-DELETE /notegroups Jegyzetcsoport törlése
-
-
-GET /notegroups/{id}/notes Jegyzetcsoporthoz tartozó jegyzetek lekérése
-
-
-
-POST /notes Új jegyzet felvétele
-
-PUT /notes Jegyzet módosítása
-
-DELETE /notes Jegyzet végleges törlése (nem kell?)
-
-GET /notes/{id}/labels Jegyzethez tartozó cimkék lekérése
-
-POST /notes/{id}/labels Új cimke felvétele a jegyzethez
-
-PUT /notes/{id}/labels (nem kell?)
-
-
-
-GET /users Felhasználók lekérése
-
-POST /users/register Új felhasználó regisztrálása
-
-POST /users/login Bejelentkezés
-
-
-
-GET /labels Összes cimke lekérése
-
-POST /labels/{id} (nem kell?)
-
-PUT /labels/{id} (nem kell?)
-
-DELETE /labels/{id} (nem kell?)
-
+## Osztálydiagram
+![uml_diagram](https://github.com/a-kelemen/alkfejl1/blob/master/uml.png)
