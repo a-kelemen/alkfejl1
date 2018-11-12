@@ -78,13 +78,13 @@ public class NoteController {
             return ResponseEntity.notFound().build();
         }
     }
-    
+    /*
     @PostMapping("")
     public ResponseEntity<Note> post(@RequestBody Note note) {
         Note savedNote = noteRepository.save(note);
         return ResponseEntity.ok(savedNote);
     }
-    
+    */
     @PutMapping("/{id}")
     public ResponseEntity<Note> update
             (@PathVariable Integer id,
