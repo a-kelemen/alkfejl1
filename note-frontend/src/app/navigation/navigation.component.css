@@ -1,0 +1,22 @@
+.groupnames:hover {
+  color:aqua;
+}
+.selected {
+  color:aqua;
+}
+
+#prevbutton {
+  position: fixed;
+  left: 0px;
+}
+
+#nextButton {
+  position: fixed;
+  right: 0px;
+}
+
+#sortradio {
+  width: 300px;
+  margin: auto;
+}
+
