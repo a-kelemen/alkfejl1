@@ -1,9 +1,12 @@
 <div>
-  <h1>{{note.noteTitle}}</h1>
+  <h1 *ngIf="!modify">{{note.noteTitle}}</h1>
+  <input *ngIf="modify" id="noteTitle" type=text [(ngModel)]="titleValue">
   <h2>Dátum: {{note.creationTime}}</h2>
-  <textarea readonly class="noteTextArea">{{note.noteText}}</textarea>
+  <textarea [readOnly]="isReadOnly" id="modifyArea" class="noteTextArea" [(ngModel)]="textValue"></textarea>
   <button>Új jegyzet</button>
-  <button>Jegyzet módosítása</button>
-  <button>Jegyzet törlése</button>
+  <button (click)="modifyNote()">Jegyzet módosítása</button>
+  <button >Jegyzet törlése</button>
+  <app-modify-note *ngIf="modify" [note]="note"></app-modify-note>
+  <button *ngIf="modify" (click)="saveModifiedNote()" id="saveButton"> Módosítás mentése</button>    
 </div>
 

@@ -1,3 +1,5 @@
+import { Label } from "./Label";
+
 export class Note {
   noteId: number;
   noteTitle: string;
@@ -5,4 +7,5 @@ export class Note {
   creationTime: Date;
   importance: number;
   isActual: boolean;
+  labels : Label[];
 }

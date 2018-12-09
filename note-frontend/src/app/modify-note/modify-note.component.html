@@ -1,3 +1,10 @@
 <h2>Jegyzet módosítása</h2>
+<!--
 <h3>{{note.noteTitle}}</h3>
 <textarea class="noteTextArea">{{note.noteText}}</textarea>
+-->
+<div *ngFor="let label of allLabels">
+    <input type="checkbox" [checked]=isSelectedLabel(label.labelId) [id]="label.labelId" (change)="changed($event)"> {{label.labelText}}
+</div>
+
+
