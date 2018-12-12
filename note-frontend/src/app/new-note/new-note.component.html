@@ -1,0 +1,13 @@
+<div>
+  <h2>Új Jegyzet</h2>
+  jegyzet címe<br>
+  <input id="noteTitle" type=text [(ngModel)]="titleValue"><br />
+  jegyzet szövege<br>
+  <textarea id="modifyArea" class="noteTextArea" [(ngModel)]="textValue"></textarea>
+  <a routerLink="/note-browser">
+    <button (click)="saveNewNote()" id="saveButton"> Új jegyzet mentése</button>
+  </a>
+  <a routerLink="/note-browser">
+    <button>Vissza a jegyzetekhez</button>
+  </a>
+</div>

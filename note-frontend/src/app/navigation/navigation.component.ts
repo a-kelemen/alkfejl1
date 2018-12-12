@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteGroup } from '../NoteGroup';
 import { Note } from '../Note';
 import { NoteService } from '../note.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -18,15 +19,10 @@ export class NavigationComponent implements OnInit {
   selectedNoteId: number;
   sortByImpNotDat: boolean;
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.noteGroups = this.noteService.getNoteGroups();
-    this.selectedGroup = this.noteGroups[0];
-    this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
-    this.sortNotes();
-    this.selectedNote = this.notes[0];
-    this.selectedNoteId = 0;
+    this.setSelectedNote();
   }
 
   onSelectGroup(group: NoteGroup): void {
@@ -120,4 +116,32 @@ export class NavigationComponent implements OnInit {
     this.sortByImpNotDat = false;
     this.sortNotes();
   }
+
+  setSelectedNote(): void {
+    const noteGroupId = +this.route.snapshot.paramMap.get('noteGroupId');
+    const noteId = +this.route.snapshot.paramMap.get('noteId');
+
+
+    this.noteGroups = this.noteService.getNoteGroups();
+    if (noteGroupId) {
+      this.selectedGroup = this.noteGroups.find(noteGroup => noteGroup.groupId === noteGroupId);
+    }
+    else {
+      this.selectedGroup = this.noteGroups[0];
+    }
+    
+    this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
+    this.sortByImpNotDat = true;
+    this.sortNotes();
+    if (noteId) {
+      this.selectedNote = this.notes.find(note => note.noteId === noteId);
+      this.selectedNoteId = this.notes.indexOf(this.selectedNote);
+    }
+    else {
+      this.selectedNote = this.notes[0];
+      this.selectedNoteId = 0;
+    }
+
+  }
+
 }

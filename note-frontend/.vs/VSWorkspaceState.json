@@ -5,8 +5,10 @@
     "\\src\\app",
     "\\src\\app\\modify-note",
     "\\src\\app\\navigation",
-    "\\src\\app\\note-browser"
+    "\\src\\app\\new-note",
+    "\\src\\app\\note-browser",
+    "\\src\\app\\search"
   ],
-  "SelectedNode": "\\src\\app\\Note.ts",
+  "SelectedNode": "\\src\\app\\note-browser\\note-browser.component.html",
   "PreviewInSolutionExplorer": false
 }

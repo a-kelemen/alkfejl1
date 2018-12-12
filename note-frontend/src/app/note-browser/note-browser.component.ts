@@ -39,10 +39,8 @@ export class NoteBrowserComponent implements OnInit {
       document.getElementById("modifyArea").removeAttribute("readonly");
     } else{
       this.modify = false;
-      document.getElementById("modifyArea").setAttribute("readonly","");
-      
+      document.getElementById("modifyArea").setAttribute("readonly", "");
     }
-
   }
 
   saveModifiedNote():void{
@@ -56,4 +54,7 @@ export class NoteBrowserComponent implements OnInit {
     this.modifyNote();
   }
 
+  deleteNote(): void {
+    console.log("httpvel jegyzet törlése");
+  }
 }

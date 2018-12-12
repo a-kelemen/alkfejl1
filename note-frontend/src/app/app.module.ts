@@ -6,14 +6,18 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NoteBrowserComponent } from './note-browser/note-browser.component';
 import { ModifyNoteComponent } from './modify-note/modify-note.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
+import { NewNoteComponent } from './new-note/new-note.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     NoteBrowserComponent,
-    ModifyNoteComponent
+    ModifyNoteComponent,
+    SearchComponent,
+    NewNoteComponent
   ],
   imports: [
     BrowserModule,

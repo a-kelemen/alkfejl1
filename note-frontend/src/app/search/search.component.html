@@ -1,0 +1,12 @@
+<h2>Jegyzet keresése</h2>
+<input [(ngModel)]="searchTerm">
+<button (click)="onSearchButtonClick()">Keresés</button>
+<h3>Találatok</h3>
+<ul class="foundNotes">
+  <li *ngFor="let note of foundNotes; index as i">
+    <a routerLink="/note-browser/{{groupsOfFoundNotes[i].groupId}}/note/{{note.noteId}}">{{note.noteTitle}}</a>
+  </li>
+</ul>
+<a routerLink="/note-browser">
+  <button>Vissza a jegyzetekhez</button>
+</a>
