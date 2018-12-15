@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 export const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': ''
+    'Authorization': '',
   })
 };
 
@@ -14,25 +14,49 @@ export const httpOptions = {
 })
 export class AuthService {
 
-  isLoggedIn: boolean = false;
-  redirectUrl: string;
+  isLoggedIn = false;
   user: User;
-  token: string;
+  redirectUrl: string;
 
-  private authUrl = 'http://localhost:8080/users';
+  private usersUrl = 'http://localhost:8080/users';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  async login(username: string, password: string): Promise<User> {
+  async login(username: string, password: string): Promise<boolean> {
+    const token = btoa(`${username}:${password}`);
+    httpOptions.headers =
+      httpOptions.headers.set(
+        'Authorization',
+        `Basic ${token}`
+      );
     try {
-      const token = btoa(`${username}:${password}`);
-      httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${token}`);
-      const user = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
+      const user = await this.http.post<User>(
+        `${this.usersUrl}/login`,
+        {},
+        httpOptions
+      ).toPromise();
+
       this.isLoggedIn = true;
       this.user = user;
-      this.token = token;
+      return Promise.resolve(true);
+    } catch (e) {
+      console.log('hiba', e);
+      return Promise.resolve(false);
+    }
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    this.user = null;
+    this.redirectUrl = null;
+  }
+
+  async register(userToRegister: User): Promise<User> {
+    try {
+      const user = await this.http.post<User>(`${this.usersUrl}/register`, userToRegister, httpOptions).toPromise();
+
       return Promise.resolve(this.user);
     }
     catch (e) {
@@ -40,12 +64,4 @@ export class AuthService {
       return Promise.reject();
     }
   }
-
-  logout() {
-    httpOptions.headers = httpOptions.headers.set('Authorization', ``);
-    this.isLoggedIn = false;
-    this.user = null;
-    this.token = null;
-  }
-
 }

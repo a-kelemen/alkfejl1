@@ -7,7 +7,7 @@ import { NoteBrowserComponent } from './note-browser/note-browser.component';
 import { ModifyNoteComponent } from './modify-note/modify-note.component';
 import { SearchComponent } from './search/search.component';
 import { NewNoteComponent } from './new-note/new-note.component'
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {
   MatToolbarModule,
@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NewNoteComponent,
     LoginComponent,
     RegistrationComponent,
-    
+    AdminPageComponent
+
   ],
   imports: [
     BrowserModule,

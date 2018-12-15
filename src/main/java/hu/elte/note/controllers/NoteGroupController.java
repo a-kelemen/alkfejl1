@@ -29,10 +29,12 @@ import hu.elte.note.repositories.NoteRepository;
 import hu.elte.note.security.AuthenticatedUser;
 //import hu.elte.note.security.AuthenticatedUser;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @RestController
 @RequestMapping("/notegroups")
+@CrossOrigin(origins="*", maxAge=3600)
 public class NoteGroupController {
     
     @Autowired

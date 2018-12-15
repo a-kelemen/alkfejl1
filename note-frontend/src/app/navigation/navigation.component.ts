@@ -27,7 +27,8 @@ export class NavigationComponent implements OnInit {
 
   onSelectGroup(group: NoteGroup): void {
     this.selectedGroup = group;
-    this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
+    //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
+    this.notes = this.selectedGroup.notes;
     this.sortNotes();
   }
 
@@ -130,7 +131,8 @@ export class NavigationComponent implements OnInit {
       this.selectedGroup = this.noteGroups[0];
     }
     
-    this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
+    //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
+    this.notes = this.selectedGroup.notes;
     this.sortByImpNotDat = true;
     this.sortNotes();
     if (noteId) {

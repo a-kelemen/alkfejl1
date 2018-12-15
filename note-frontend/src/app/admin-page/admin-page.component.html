@@ -1,0 +1,21 @@
+<h2>Admin felület</h2>
+<div>
+  <ul class="users">
+    <li *ngFor="let user of users; index as i">{{user.username}}
+      <ul>
+        <li *ngFor="let group of user.noteGroups">{{group.groupname}}
+          <ul>
+            <li *ngFor="let note of group.notes" class="noteNames" [class.selected]="note === selectedNote" (click)="selectNote(note)"> {{note.noteTitle}} 
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="noteTextArea" *ngIf="noteIsSelected">
+  <h2>{{selectedNote.creationTime}}</h2>
+  <h2>{{selectedNote.noteTitle}}</h2>
+  <textarea>{{selectedNote.noteText}}</textarea><br>
+  <button (click)="deleteNote()">Jegyzet törlése</button>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   form = this.fb.group({
@@ -34,6 +36,11 @@ export class RegistrationComponent implements OnInit {
     console.log(this.username.value);
     console.log(this.password.value);
     console.log(this.email.value);
+    let username: string = this.username.value;
+    let password: string = this.password.value;
+    let emailAddress: string = this.email.value;
+    this.authService.register({ username, password, emailAddress } as User);
+    this.router.navigate(['/login']);
   }
 
   regClick = function () {

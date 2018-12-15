@@ -1,0 +1,8 @@
+.noteTextArea {
+  width: 400px;
+  margin: auto;
+}
+
+.selected {
+  color: aqua;
+}

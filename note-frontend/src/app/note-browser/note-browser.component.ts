@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../Note';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class NoteBrowserComponent implements OnInit {
   textValue:string;
   titleValue:string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.isReadOnly = true;
@@ -56,5 +57,6 @@ export class NoteBrowserComponent implements OnInit {
 
   deleteNote(): void {
     console.log("httpvel jegyzet törlése");
+    //this.router.navigate(['/note-browser']);
   }
 }

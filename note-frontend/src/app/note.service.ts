@@ -6,6 +6,8 @@ import { GROUPS } from './mock-data-groups';
 import { NoteGroup } from './NoteGroup';
 import { Label } from './Label';
 import { LABELS } from './mock-data-labels';
+import { User } from './user';
+import { USERS } from './mock-data-users';
 
 
 @Injectable({
@@ -17,6 +19,7 @@ export class NoteService {
   notes2: Note[] = NOTES2;
   noteGroups: NoteGroup[] = GROUPS; 
   labels: Label[] = LABELS;
+  users: User[] = USERS;
 
   constructor() { }
   
@@ -43,7 +46,11 @@ export class NoteService {
     getNoteLabels(): Label[]{
       return this.notes1[0].labels;
 
-    }
+  }
+
+  getUsers(): User[] {
+    return this.users;
+  }
 
     
   

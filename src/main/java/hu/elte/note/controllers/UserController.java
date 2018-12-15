@@ -8,6 +8,7 @@ package hu.elte.note.controllers;
 import org.springframework.http.ResponseEntity;
 import java.util.Optional;
 import hu.elte.note.entities.User;
+import hu.elte.note.entities.User.Role;
 import hu.elte.note.repositories.UserRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import hu.elte.note.security.AuthenticatedUser;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 
 /**
@@ -26,6 +30,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins="*", maxAge=3600)
 public class UserController {
     
     @Autowired
@@ -33,6 +38,9 @@ public class UserController {
     
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
     
     @PostMapping("register")
     public ResponseEntity<User> register(@RequestBody User user) {
@@ -56,19 +64,37 @@ public class UserController {
     @GetMapping("")
     public ResponseEntity getAll()
     {
-        return ResponseEntity.ok(userRepository.findAll());
+        User user = authenticatedUser.getUser();
+        User.Role role = user.getRole();
+        if (role == Role.ROLE_ADMIN)
+        {
+            return ResponseEntity.ok(userRepository.findAll());    
+        }
+        else
+        {
+            return ResponseEntity.notFound().build();
+        }
+        
     }
     
     @GetMapping("/{id}")
     public ResponseEntity getById(@PathVariable Integer id)
     {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isPresent())
+        User authUser = authenticatedUser.getUser();
+        User.Role role = authUser.getRole();
+        if (role == Role.ROLE_ADMIN)
         {
-            return ResponseEntity.ok(user.get());
+            Optional<User> user = userRepository.findById(id);
+            if (user.isPresent())
+            {
+                return ResponseEntity.ok(user.get());
+            }
+            else
+            {
+                return ResponseEntity.notFound().build();
+            }
         }
-        else
-        {
+        else {
             return ResponseEntity.notFound().build();
         }
     }
