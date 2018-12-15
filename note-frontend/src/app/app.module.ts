@@ -20,7 +20,9 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-
+import { RegistrationComponent } from './registration/registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     ModifyNoteComponent,
     SearchComponent,
     NewNoteComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

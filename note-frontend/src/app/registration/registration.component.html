@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <div *ngIf="message" class="content">
+    {{ message }}
+  </div>
+
+  <mat-form-field class="content">
+    <input matInput  formControlName="password" placeholder="Password" required>
+    <mat-error *ngIf="password.invalid">Password is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="content">
+    <input matInput  formControlName="username"  placeholder="Username" required>
+    <mat-error *ngIf="username.invalid">Username is required</mat-error>
+  </mat-form-field>
+
+
+
+  <mat-form-field class="content">
+    <input matInput  formControlName="email"  placeholder="Email"  required>
+    <mat-error *ngIf="email.invalid">Email is required</mat-error>
+  </mat-form-field>
+
+  <div class="content">
+    <button mat-flat-button type="submit" color="primary" [disabled]="form.invalid" (click)="regClick()">Regisztrálok</button>
+  </div>
+</form>
