@@ -135,7 +135,6 @@ export class NavigationComponent implements OnInit {
         console.log(this.noteGroups);
       }
 
-      //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
       if (this.selectedGroup.notes) {
         this.notes = this.selectedGroup.notes;
         this.convertDate();
@@ -164,12 +163,14 @@ export class NavigationComponent implements OnInit {
       console.log(note.created_at);
       let dateToSplit: string = note.created_at;
       let splitDate: string[] = dateToSplit.split(' ');
-     
-      
 
-      
-      
     }
+  }
+
+  async refresh() {
+    this.noteGroups = await this.noteService.getNoteGroups();
+    this.notes = this.selectedGroup.notes;
+    
   }
 
 }
