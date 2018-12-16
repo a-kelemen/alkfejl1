@@ -8,13 +8,12 @@ import { Note } from '../Note';
 @Component({
   selector: 'app-new-note',
   templateUrl: './new-note.component.html',
-  styleUrls: ['./new-note.component.css']
+  styleUrls: ['./new-note.component.css', '../style.css']
 })
 export class NewNoteComponent implements OnInit {
 
   titleValue: string;
   textValue: string;
-
   
 
   constructor(private noteService: NoteService, private fb: FormBuilder, private router: Router) { }
@@ -39,6 +38,7 @@ export class NewNoteComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/note-browser']);
+
   }
 
 }

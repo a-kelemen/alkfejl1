@@ -1,18 +1,20 @@
 .groupnames:hover {
-  color:aqua;
+  color:pink;
 }
 .selected {
-  color:aqua;
+  color:pink;
 }
 
 #prevbutton {
-  position: fixed;
-  left: 0px;
+
+
+  float:left;
 }
 
 #nextButton {
-  position: fixed;
+  
   right: 0px;
+  float:right;
 }
 
 #sortradio {

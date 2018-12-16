@@ -1,19 +1,31 @@
-<div *ngIf="note">
-  <h1 *ngIf="!modify">{{note.noteTitle}}</h1>
-  <input *ngIf="modify" id="noteTitle" type=text [(ngModel)]="titleValue">
-  <h2>Dátum: {{note.creationTime}}</h2>
-  <textarea [readOnly]="isReadOnly" id="modifyArea" class="noteTextArea" [(ngModel)]="textValue"></textarea>
+
+<div class="componentContainer">
+  <div *ngIf="note">
+    <div id="titleContainer">
+      <h1 *ngIf="!modify" class="mat-title noteTitle">{{note.noteTitle}}</h1>
+      <input matInput *ngIf="modify" id="noteTitle" class="noteTitle" type=text [(ngModel)]="titleValue">
+    </div>
   </div>
-<div>
-  <a routerLink="/new-note">
-    <button *ngIf="!modify">Új jegyzet</button>
-  </a>
-  <button (click)="modifyNote()" *ngIf="!modify">Jegyzet módosítása</button>
-  <a routerLink="/note-browser">
-    <button (click)="deleteNote()" *ngIf="!modify">Jegyzet törlése</button>
-  </a>
-  <button (click)="addNewNoteGroup()" *ngIf="!modify">új jegyzet csoport</button>
+  <div class="container textAreaContainer">
+    <textarea [readOnly]="isReadOnly" id="modifyArea" class="noteTextArea center" [(ngModel)]="textValue"></textarea>
+  </div>  
+  <h2 class="mat-h3">Létrehozás ideje: {{note.creationTime | date:'dd-MM-yy hh-mm' }} </h2>
+  <div *ngIf="!modify" class="container">
+    <a routerLink="/new-note">
+      <button mat-flat-button color="primary" class="center">Új jegyzet</button>
+    </a>
+  </div>
+  <div *ngIf="!modify" class="container">
+    <button mat-flat-button color="primary" class="center" (click)="modifyNote()" >Jegyzet módosítása</button>
+  </div>
+  <div *ngIf="!modify" class="container">
+    <a routerLink="/note-browser">
+      <button mat-flat-button color="primary" class="center" (click)="deleteNote()" >Jegyzet törlése</button>
+    </a>
+  </div>
   <app-modify-note *ngIf="modify" [note]="note"></app-modify-note>
-  <button *ngIf="modify" (click)="saveModifiedNote()" id="saveButton"> Módosítás mentése</button>    
+  <div *ngIf="modify" class="container">
+    <button (click)="saveModifiedNote()" id="saveButton"  mat-flat-button color="primary" class="center"> Módosítás mentése</button>    
+  </div>
 </div>
 

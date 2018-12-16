@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-note-browser',
   templateUrl: './note-browser.component.html',
-  styleUrls: ['./note-browser.component.css']
+  styleUrls: ['./note-browser.component.css', '../style.css']
 })
 export class NoteBrowserComponent implements OnInit {
 

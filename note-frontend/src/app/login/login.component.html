@@ -1,24 +1,24 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-  <div *ngIf="message" class="content">
+  <div *ngIf="message" class="center">
     {{ message }}
   </div>
 
-  <mat-form-field class="content">
+  <mat-form-field class="center">
     <input matInput placeholder="Username" formControlName="username" required>
     <mat-error *ngIf="username.invalid">Username is required</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="content">
+  <mat-form-field class="center">
     <input matInput placeholder="Password" formControlName="password" required [type]="hidePassword ? 'password' : 'text'">
     <mat-error *ngIf="password.invalid">Password is required</mat-error>
   </mat-form-field>
 
-  <div class="content">
+  <div class="center">
     <button mat-flat-button type="submit" color="primary" [disabled]="form.invalid">Belépés</button>
   </div>
 
-  <div class="content">
+  <div class="center">
     <button mat-flat-button color="primary" (click)="regClick()">Regisztráció</button>
   </div>
 </form>

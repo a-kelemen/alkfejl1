@@ -6,7 +6,7 @@ import { Note } from '../Note';
 @Component({
   selector: 'app-modify-note',
   templateUrl: './modify-note.component.html',
-  styleUrls: ['./modify-note.component.css']
+  styleUrls: ['./modify-note.component.css', '../style.css']
 })
 export class ModifyNoteComponent implements OnInit {
   @Input() note: Note;

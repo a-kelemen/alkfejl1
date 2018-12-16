@@ -8,8 +8,10 @@ import { Label } from './Label';
 import { LABELS } from './mock-data-labels';
 import { User } from './user';
 import { USERS } from './mock-data-users';
+
 import { HttpClient } from '@angular/common/http';
 import { httpOptions, AuthService } from './auth.service';
+
 
 
 @Injectable({
@@ -25,6 +27,7 @@ export class NoteService {
   noteGroups: NoteGroup[] = GROUPS; 
   labels: Label[] = LABELS;
   users: User[] = USERS;
+  private noteUrl = 'http://localhost:8080/notes';
 
    noteGroupsUrl: string = 'http://localhost:8080/notegroups';
    notesUrl: string = 'http://localhost:8080/notes';
@@ -32,6 +35,7 @@ export class NoteService {
    labelsUrl: string = 'http://localhost:8080/labels';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
   
   getNotes(noteGroupId: number): Promise<Note[]> {
     /*
@@ -113,6 +117,7 @@ export class NoteService {
       return this.http.post<NoteGroup>(this.noteGroupsUrl, noteGroup, httpOptions).toPromise();
     
     }
+
 
     
   

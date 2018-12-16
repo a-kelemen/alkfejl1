@@ -1,0 +1,16 @@
+.center{
+    display:block;
+    margin:0 auto;
+
+}
+
+.container {
+    padding-top: 30px;
+}
+
+.componentContainer{
+    width: 50%;
+    display: block;
+    margin:0 auto;
+}
+

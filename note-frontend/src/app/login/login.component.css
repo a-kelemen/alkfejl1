@@ -10,9 +10,3 @@ form > * {
 .mat-focused .placeholder {
     color: transparent;
 }
-
-.content{
-    display:block;
-    margin:0 auto;
-
-}
