@@ -5,7 +5,6 @@ export class Note {
   noteTitle: string;
   noteText: string;
   created_at: string;
-  convertedCreated_at: Date;
   noteImportance: number;
   isActual: boolean;
   labels : Label[];

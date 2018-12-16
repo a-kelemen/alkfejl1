@@ -25,11 +25,11 @@ export class AuthService {
   ) { }
 
   async login(username: string, password: string): Promise<boolean> {
-    this.token = btoa(`${username}:${password}`);
+    const token = btoa(`${username}:${password}`);
     httpOptions.headers =
       httpOptions.headers.set(
         'Authorization',
-        `Basic ${this.token}`
+        `Basic ${token}`
       );
     try {
       const user = await this.http.post<User>(

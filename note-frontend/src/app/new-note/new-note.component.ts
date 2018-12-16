@@ -23,7 +23,7 @@ export class NewNoteComponent implements OnInit {
   form = this.fb.group({
     noteTitle: ['', [Validators.required]],
     noteText: ['', [Validators.required]],
-    noteImportance['', [Validators.required]]
+    noteImportance: ['', [Validators.required]]
   });
 
   async ngOnInit() {

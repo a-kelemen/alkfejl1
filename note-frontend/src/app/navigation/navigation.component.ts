@@ -50,10 +50,10 @@ export class NavigationComponent implements OnInit {
 
   sortNotesByDate(): void {
     this.notes.sort((a, b) => {
-      if (a.convertedCreated_at > b.convertedCreated_at) {
+      if (a.created_at > b.created_at) {
         return -1;
       }
-      else if (a.convertedCreated_at <= b.convertedCreated_at) {
+      else if (a.created_at <= b.created_at) {
         return 1;
       }
       else {
@@ -164,7 +164,7 @@ export class NavigationComponent implements OnInit {
       console.log(note.created_at);
       let dateToSplit: string = note.created_at;
       let splitDate: string[] = dateToSplit.split(' ');
-      this.notes[i].convertedCreated_at = new Date(splitDate[0]);
+     
       
 
       
