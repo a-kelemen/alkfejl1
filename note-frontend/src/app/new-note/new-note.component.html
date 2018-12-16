@@ -4,16 +4,28 @@
 </div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <h2>Új Jegyzet</h2>
-  jegyzet címe<br>
-  <input id="noteTitle" type=text formControlName="noteTitle" required><br />
-  jegyzet szövege<br>
-  <textarea id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea><br />
+ 
   <input type="number" formControlName="noteImportance" required><br />
 
-    <button (click)="submit" [disabled]="form.invalid"> Új jegyzet mentése</button>
+  <h2 class="mat-h3">Új Jegyzet</h2>
+  <h2 class="mat-h3">jegyzet címe</h2>
+  <mat-form-field class="center">
+    <input matInput id="noteTitle" type=text formControlName="noteTitle" required>
+  </mat-form-field>
+  <mat-form-field class="center">
+    <input matInput type="number" formControlName="noteImportance" required>
+  </mat-form-field>
 
+  <h2 class="mat-h3">jegyzet szövege</h2>
+  <mat-form-field class="center">
+    <textarea matInput id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea>
+  </mat-form-field>
 
-    <button type="goBack()" >Vissza a jegyzetekhez</button>
+  <div class="center">
+    <button mat-flat-button color="primary" (click)="submit" [disabled]="form.invalid">Új jegyzet mentése</button>
+  </div>
+  <div class="center">
+    <button mat-flat-button color="primary" type="goBack()" >Vissza a jegyzetekhez </button>
+  </div>
 
 </form>
