@@ -26,12 +26,12 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearchButtonClick(): void {
+  async onSearchButtonClick() {
     let foundNotes = [];
     let groupsOfFoundNotes = [];
-    this.noteGroups = this.noteService.getNoteGroups();
+    this.noteGroups = await this.noteService.getNoteGroups();
     for (let i = 0; i < this.noteGroups.length; i++) {
-      this.notes = this.noteService.getNotes(this.noteGroups[i].groupId);
+      this.notes = await this.noteService.getNotes(this.noteGroups[i].groupId);
       for (let j = 0; j < this.notes.length; j++) {
         console.log(this.notes[j]);
         let result: number = this.notes[j].noteText.search(this.searchTerm);

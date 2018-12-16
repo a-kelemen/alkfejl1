@@ -18,8 +18,8 @@ export class ModifyNoteComponent implements OnInit {
     private noteService: NoteService
   ) { }
 
-  ngOnInit() {
-    this.allLabels = this.noteService.getAllLabels();
+  async ngOnInit() {
+    this.allLabels = await this.noteService.getAllLabels();
     this.noteLabels = this.note.labels;
   }
 

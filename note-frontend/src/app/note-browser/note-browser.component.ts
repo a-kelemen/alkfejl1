@@ -21,16 +21,20 @@ export class NoteBrowserComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.isReadOnly = true;
-    this.textValue = this.note.noteText;
-    this.titleValue = this.note.noteTitle;
+    if (this.note) {
+      this.isReadOnly = true;
+      this.textValue = this.note.noteText;
+      this.titleValue = this.note.noteTitle;
+    }
   }
 
-  ngOnChanges(){
-    this.modify = false;
-    this.textValue = this.note.noteText;
-    this.titleValue = this.note.noteTitle;
-    document.getElementById("modifyArea").setAttribute("readonly","");
+  ngOnChanges() {
+    if (this.note) {
+      this.modify = false;
+      this.textValue = this.note.noteText;
+      this.titleValue = this.note.noteTitle;
+      document.getElementById("modifyArea").setAttribute("readonly", "");
+    }
   }
 
 
@@ -44,19 +48,25 @@ export class NoteBrowserComponent implements OnInit {
     }
   }
 
-  saveModifiedNote():void{
-    var titleText= ((document.getElementById("noteTitle") as HTMLInputElement).value);
-    //console.log("title: ", titleText);
-    var areaText= ((document.getElementById("modifyArea") as HTMLInputElement).value);
-    //console.log("textarea: ", areaText);
-    console.log("save");
-    this.note.noteTitle = titleText;
-    this.note.noteText = areaText;
-    this.modifyNote();
+  saveModifiedNote(): void{
+    if (this.note) {
+      var titleText = ((document.getElementById("noteTitle") as HTMLInputElement).value);
+      //console.log("title: ", titleText);
+      var areaText = ((document.getElementById("modifyArea") as HTMLInputElement).value);
+      //console.log("textarea: ", areaText);
+      console.log("save");
+      this.note.noteTitle = titleText;
+      this.note.noteText = areaText;
+      this.modifyNote();
+    }
   }
 
   deleteNote(): void {
     console.log("httpvel jegyzet törlése");
     //this.router.navigate(['/note-browser']);
+  }
+
+  addNewNoteGroup():void {
+    this.router.navigate(['/new-note-group']);
   }
 }

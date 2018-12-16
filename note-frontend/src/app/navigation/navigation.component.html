@@ -1,13 +1,13 @@
-<div>
+<div *ngIf="noteGroups">
   <span *ngFor="let noteGroup of noteGroups" class="groupnames"
         [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.groupname}} </span>
 </div>
-<div>
+<div *ngIf="notes">
   <span *ngFor="let note of notes" class="noteNames"
         [class.selected]="note === selectedNote" (click)="onSelectNote(note)"> {{note.noteTitle}} </span>
 </div>
 <a routerLink="/search">
-  <button>Jegyzet keresése</button>
+  <button >Jegyzet keresése</button>
 </a>
 <br>
 <button (click)="switchToPrevNote()" id="prevButton"> Előző jegyzet</button>

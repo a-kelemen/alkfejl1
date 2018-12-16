@@ -1,13 +1,13 @@
-<div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2>Új Jegyzet</h2>
   jegyzet címe<br>
-  <input id="noteTitle" type=text [(ngModel)]="titleValue"><br />
+  <input id="noteTitle" type=text formControlName="noteTitle" required><br />
   jegyzet szövege<br>
-  <textarea id="modifyArea" class="noteTextArea" [(ngModel)]="textValue"></textarea>
-  <a routerLink="/note-browser">
-    <button (click)="saveNewNote()" id="saveButton"> Új jegyzet mentése</button>
-  </a>
-  <a routerLink="/note-browser">
-    <button>Vissza a jegyzetekhez</button>
-  </a>
-</div>
+  <textarea id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea>
+
+    <button (click)="submit" [disabled]="form.invalid"> Új jegyzet mentése</button>
+
+
+    <button type="goBack()" >Vissza a jegyzetekhez</button>
+
+</form>

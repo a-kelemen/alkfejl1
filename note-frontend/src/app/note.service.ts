@@ -8,11 +8,16 @@ import { Label } from './Label';
 import { LABELS } from './mock-data-labels';
 import { User } from './user';
 import { USERS } from './mock-data-users';
+import { HttpClient } from '@angular/common/http';
+import { httpOptions, AuthService } from './auth.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class NoteService {
 
   notes1: Note[] = NOTES1;
@@ -21,9 +26,15 @@ export class NoteService {
   labels: Label[] = LABELS;
   users: User[] = USERS;
 
-  constructor() { }
+   noteGroupsUrl: string = 'http://localhost:8080/notegroups';
+   notesUrl: string = 'http://localhost:8080/notes';
+   usersUrl: string  = 'http://localhost:8080/users';
+   labelsUrl: string = 'http://localhost:8080/labels';
+
+  constructor(private http: HttpClient, private authService: AuthService) { }
   
-  getNotes(noteGroupId: number): Note[] {
+  getNotes(noteGroupId: number): Promise<Note[]> {
+    /*
     if (noteGroupId === 1) {
       return this.notes1;
     }
@@ -33,24 +44,75 @@ export class NoteService {
     else {
       return [];
     }
+    */
+    return this.http.get<Note[]>(`${this.noteGroupsUrl}/${noteGroupId}/notes`).toPromise();
   }
 
-    getNoteGroups(): NoteGroup[] {
-      return this.noteGroups;
+    getNoteGroups(): Promise<NoteGroup[]> {
+      //return this.noteGroups;
+      let token: string = this.authService.getToken();
+      httpOptions.headers =
+        httpOptions.headers.set(
+          'Authorization',
+          `Basic ${token}`
+        );
+      return this.http.get<NoteGroup[]>(this.noteGroupsUrl, httpOptions).toPromise();
     }
 
-    getAllLabels(): Label[] {
-      return this.labels;
+    getAllLabels(): Promise<Label[]> {
+      //return this.labels;
+      let token: string = this.authService.getToken();
+      httpOptions.headers =
+        httpOptions.headers.set(
+          'Authorization',
+          `Basic ${token}`
+        );
+      return this.http.get<Label[]>(this.labelsUrl, httpOptions).toPromise();
     }
 
-    getNoteLabels(): Label[]{
-      return this.notes1[0].labels;
+    getNoteLabels(id: number): Promise<Label[]>{
+      //return this.notes1[0].labels;
+      let token: string = this.authService.getToken();
+      httpOptions.headers =
+        httpOptions.headers.set(
+          'Authorization',
+          `Basic ${token}`
+        );
+      return this.http.get<Label[]>(`${this.labelsUrl}/${id})`, httpOptions).toPromise();
 
-  }
+    }
 
-  getUsers(): User[] {
-    return this.users;
-  }
+    getUsers(): Promise<User[]> {
+      //return this.users;
+      let token: string = this.authService.getToken();
+      httpOptions.headers =
+        httpOptions.headers.set(
+          'Authorization',
+          `Basic ${token}`
+        );
+      return this.http.get<User[]>(this.usersUrl, httpOptions).toPromise();
+    }
+
+  newNote(note: Note): Promise<Note> {
+    let token: string = this.authService.getToken();
+    httpOptions.headers =
+      httpOptions.headers.set(
+        'Authorization',
+        `Basic ${token}`
+      );
+      return this.http.post<Note>(this.notesUrl, note, httpOptions).toPromise();
+    }
+
+  newNoteGroup(noteGroup: NoteGroup): Promise<NoteGroup> {
+    let token: string = this.authService.getToken();
+    httpOptions.headers =
+      httpOptions.headers.set(
+        'Authorization',
+        `Basic ${token}`
+      );
+      return this.http.post<NoteGroup>(this.noteGroupsUrl, noteGroup, httpOptions).toPromise();
+    
+    }
 
     
   

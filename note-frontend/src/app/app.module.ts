@@ -24,6 +24,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { NewNoteGroupComponent } from './new-note-group/new-note-group.component';
+import { httpInterceptorProviders } from '.';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     NewNoteComponent,
     LoginComponent,
     RegistrationComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    NewNoteGroupComponent
 
   ],
   imports: [
@@ -56,7 +59,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     NoopAnimationsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

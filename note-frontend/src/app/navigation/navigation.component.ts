@@ -118,30 +118,39 @@ export class NavigationComponent implements OnInit {
     this.sortNotes();
   }
 
-  setSelectedNote(): void {
+  async setSelectedNote() {
     const noteGroupId = +this.route.snapshot.paramMap.get('noteGroupId');
     const noteId = +this.route.snapshot.paramMap.get('noteId');
 
-
-    this.noteGroups = this.noteService.getNoteGroups();
-    if (noteGroupId) {
-      this.selectedGroup = this.noteGroups.find(noteGroup => noteGroup.groupId === noteGroupId);
-    }
-    else {
-      this.selectedGroup = this.noteGroups[0];
-    }
     
-    //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
-    this.notes = this.selectedGroup.notes;
-    this.sortByImpNotDat = true;
-    this.sortNotes();
-    if (noteId) {
-      this.selectedNote = this.notes.find(note => note.noteId === noteId);
-      this.selectedNoteId = this.notes.indexOf(this.selectedNote);
-    }
-    else {
-      this.selectedNote = this.notes[0];
-      this.selectedNoteId = 0;
+
+    this.noteGroups = await this.noteService.getNoteGroups();
+    if (this.noteGroups[0]) {
+      console.log(this.noteGroups);
+      if (noteGroupId) {
+        this.selectedGroup = this.noteGroups.find(noteGroup => noteGroup.groupId === noteGroupId);
+      }
+      else {
+        this.selectedGroup = this.noteGroups[0];
+      }
+
+      //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
+      if (this.selectedGroup.notes) {
+        this.notes = this.selectedGroup.notes;
+
+        if (this.notes) {
+          this.sortByImpNotDat = true;
+          this.sortNotes();
+          if (noteId) {
+            this.selectedNote = this.notes.find(note => note.noteId === noteId);
+            this.selectedNoteId = this.notes.indexOf(this.selectedNote);
+          }
+          else {
+            this.selectedNote = this.notes[0];
+            this.selectedNoteId = 0;
+          }
+        }
+      }
     }
 
   }

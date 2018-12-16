@@ -3,12 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\admin-page",
+    "\\src\\app\\login",
     "\\src\\app\\modify-note",
     "\\src\\app\\navigation",
     "\\src\\app\\new-note",
     "\\src\\app\\note-browser",
-    "\\src\\app\\search"
+    "\\src\\app\\registration"
   ],
-  "SelectedNode": "\\src\\app\\note-browser\\note-browser.component.html",
+  "SelectedNode": "\\src\\app\\navigation\\navigation.component.ts",
   "PreviewInSolutionExplorer": false
 }

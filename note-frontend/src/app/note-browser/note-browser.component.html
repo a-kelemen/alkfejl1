@@ -1,8 +1,10 @@
-<div>
+<div *ngIf="note">
   <h1 *ngIf="!modify">{{note.noteTitle}}</h1>
   <input *ngIf="modify" id="noteTitle" type=text [(ngModel)]="titleValue">
   <h2>Dátum: {{note.creationTime}}</h2>
   <textarea [readOnly]="isReadOnly" id="modifyArea" class="noteTextArea" [(ngModel)]="textValue"></textarea>
+  </div>
+<div>
   <a routerLink="/new-note">
     <button *ngIf="!modify">Új jegyzet</button>
   </a>
@@ -10,6 +12,7 @@
   <a routerLink="/note-browser">
     <button (click)="deleteNote()" *ngIf="!modify">Jegyzet törlése</button>
   </a>
+  <button (click)="addNewNoteGroup()" *ngIf="!modify">új jegyzet csoport</button>
   <app-modify-note *ngIf="modify" [note]="note"></app-modify-note>
   <button *ngIf="modify" (click)="saveModifiedNote()" id="saveButton"> Módosítás mentése</button>    
 </div>

@@ -17,6 +17,7 @@ export class AuthService {
   isLoggedIn = false;
   user: User;
   redirectUrl: string;
+  token: string;
 
   private usersUrl = 'http://localhost:8080/users';
 
@@ -25,11 +26,11 @@ export class AuthService {
   ) { }
 
   async login(username: string, password: string): Promise<boolean> {
-    const token = btoa(`${username}:${password}`);
+    this.token = btoa(`${username}:${password}`);
     httpOptions.headers =
       httpOptions.headers.set(
         'Authorization',
-        `Basic ${token}`
+        `Basic ${this.token}`
       );
     try {
       const user = await this.http.post<User>(
@@ -40,6 +41,8 @@ export class AuthService {
 
       this.isLoggedIn = true;
       this.user = user;
+
+
       return Promise.resolve(true);
     } catch (e) {
       console.log('hiba', e);
@@ -64,4 +67,10 @@ export class AuthService {
       return Promise.reject();
     }
   }
+
+  getToken(): string {
+    return this.token;
+  }
+
+ 
 }

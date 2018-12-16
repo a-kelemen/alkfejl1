@@ -24,8 +24,8 @@ export class AdminPageComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers(): void {
-    this.users = this.noteService.getUsers();
+  async getUsers() {
+    this.users = await this.noteService.getUsers();
     this.noteIsSelected = false;
   }
 
