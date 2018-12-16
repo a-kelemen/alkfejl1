@@ -6,7 +6,7 @@
       <input matInput *ngIf="modify" id="noteTitle" class="noteTitle" type=text [(ngModel)]="titleValue">
     </div>
   </div>
-  <div class="container textAreaContainer" *ngIf="note">
+  <div class="container textAreaContainer" >
     <textarea [readOnly]="isReadOnly" id="modifyArea" class="noteTextArea center" [(ngModel)]="textValue"></textarea>
   </div>
   <h2 class="mat-h3" *ngIf="note">Létrehozás ideje: {{note.convertedCreationTime | date:'dd-MM-yy hh-mm' }} </h2>

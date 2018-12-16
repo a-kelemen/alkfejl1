@@ -4,8 +4,8 @@ export class Note {
   noteId: number;
   noteTitle: string;
   noteText: string;
-  creationTime: string;
-  convertedCreationTime: Date;
+  created_at: string;
+  convertedCreated_at: Date;
   noteImportance: number;
   isActual: boolean;
   labels : Label[];

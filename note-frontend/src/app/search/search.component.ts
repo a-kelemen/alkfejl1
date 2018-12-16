@@ -31,7 +31,9 @@ export class SearchComponent implements OnInit {
     let groupsOfFoundNotes = [];
     this.noteGroups = await this.noteService.getNoteGroups();
     for (let i = 0; i < this.noteGroups.length; i++) {
-      this.notes = await this.noteService.getNotes(this.noteGroups[i].groupId);
+      console.log(i);
+      this.notes = this.noteGroups[i].notes;
+      console.log(this.notes);
       for (let j = 0; j < this.notes.length; j++) {
         console.log(this.notes[j]);
         let result: number = this.notes[j].noteText.search(this.searchTerm);

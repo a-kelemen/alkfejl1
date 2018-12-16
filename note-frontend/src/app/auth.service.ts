@@ -17,7 +17,6 @@ export class AuthService {
   isLoggedIn = false;
   user: User;
   redirectUrl: string;
-  token: string;
 
   private usersUrl = 'http://localhost:8080/users';
 
@@ -68,9 +67,6 @@ export class AuthService {
     }
   }
 
-  getToken(): string {
-    return this.token;
-  }
 
  
 }

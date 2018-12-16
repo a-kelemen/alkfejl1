@@ -35,10 +35,10 @@ export class NavigationComponent implements OnInit {
 
   sortNotesByImportance(): void {
     this.notes.sort((a, b) => {
-      if (a.importance > b.importance) {
+      if (a.noteImportance > b.noteImportance) {
         return -1;
       }
-      else if (a.importance <= b.importance) {
+      else if (a.noteImportance <= b.noteImportance) {
         return 1;
       }
       else {
@@ -50,10 +50,10 @@ export class NavigationComponent implements OnInit {
 
   sortNotesByDate(): void {
     this.notes.sort((a, b) => {
-      if (a.convertedCreationTime > b.convertedCreationTime) {
+      if (a.convertedCreated_at > b.convertedCreated_at) {
         return -1;
       }
-      else if (a.convertedCreationTime <= b.convertedCreationTime) {
+      else if (a.convertedCreated_at <= b.convertedCreated_at) {
         return 1;
       }
       else {
@@ -161,8 +161,10 @@ export class NavigationComponent implements OnInit {
   convertDate(): void {
     for (let i = 0; i < this.notes.length; i++) {
       let note = this.notes[i];
-      let splitDate: string[] = note.creationTime.split(' ');
-      this.notes[i].convertedCreationTime = new Date(splitDate[0]);
+      console.log(note.created_at);
+      let dateToSplit: string = note.created_at;
+      let splitDate: string[] = dateToSplit.split(' ');
+      this.notes[i].convertedCreated_at = new Date(splitDate[0]);
       
 
       
