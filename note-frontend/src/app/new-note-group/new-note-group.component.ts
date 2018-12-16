@@ -28,8 +28,9 @@ export class NewNoteGroupComponent implements OnInit {
   get noteGroupName() { return this.form.get('noteGroupName'); }
 
   onSubmit() {
-    let groupname: string = this.noteGroupName.value;
-    this.noteService.newNoteGroup({ groupname } as NoteGroup);
+    let noteGroupName: string = this.noteGroupName.value;
+    this.noteService.newNoteGroup({ noteGroupName } as NoteGroup);
+    this.router.navigate(['/note-browser']);
   }
 
   back(): void {

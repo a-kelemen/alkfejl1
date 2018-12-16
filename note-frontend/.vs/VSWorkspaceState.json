@@ -8,9 +8,9 @@
     "\\src\\app\\modify-note",
     "\\src\\app\\navigation",
     "\\src\\app\\new-note",
-    "\\src\\app\\note-browser",
-    "\\src\\app\\registration"
+    "\\src\\app\\new-note-group",
+    "\\src\\app\\note-browser"
   ],
-  "SelectedNode": "\\src\\app\\navigation\\navigation.component.ts",
+  "SelectedNode": "\\src\\app\\NoteGroup.ts",
   "PreviewInSolutionExplorer": false
 }

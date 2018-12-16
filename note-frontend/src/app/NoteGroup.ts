@@ -2,6 +2,6 @@ import { Note } from "./Note";
 
 export class NoteGroup {
   groupId: number;
-  groupname: string;
+  noteGroupName: string;
   notes: Note[];
 }

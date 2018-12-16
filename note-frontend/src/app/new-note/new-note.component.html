@@ -1,3 +1,8 @@
+<div *ngIf="noteGroups">
+  <span *ngFor="let noteGroup of noteGroups" class="groupnames"
+        [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)">{{noteGroup.groupname}}</span>
+</div>
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2>Új Jegyzet</h2>
   jegyzet címe<br>

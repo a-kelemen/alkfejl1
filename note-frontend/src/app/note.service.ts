@@ -49,6 +49,12 @@ export class NoteService {
       return [];
     }
     */
+    let token: string = this.authService.getToken();
+    httpOptions.headers =
+      httpOptions.headers.set(
+        'Authorization',
+        `Basic ${token}`
+      );
     return this.http.get<Note[]>(`${this.noteGroupsUrl}/${noteGroupId}/notes`).toPromise();
   }
 

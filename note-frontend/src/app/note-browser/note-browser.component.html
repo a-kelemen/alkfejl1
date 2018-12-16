@@ -8,7 +8,7 @@
   </div>
   <div class="container textAreaContainer">
     <textarea [readOnly]="isReadOnly" id="modifyArea" class="noteTextArea center" [(ngModel)]="textValue"></textarea>
-  </div>  
+  </div>
   <h2 class="mat-h3">Létrehozás ideje: {{note.creationTime | date:'dd-MM-yy hh-mm' }} </h2>
   <div *ngIf="!modify" class="container">
     <a routerLink="/new-note">
@@ -16,16 +16,21 @@
     </a>
   </div>
   <div *ngIf="!modify" class="container">
-    <button mat-flat-button color="primary" class="center" (click)="modifyNote()" >Jegyzet módosítása</button>
+    <button mat-flat-button color="primary" class="center" (click)="modifyNote()">Jegyzet módosítása</button>
   </div>
   <div *ngIf="!modify" class="container">
     <a routerLink="/note-browser">
-      <button mat-flat-button color="primary" class="center" (click)="deleteNote()" >Jegyzet törlése</button>
+      <button mat-flat-button color="primary" class="center" (click)="deleteNote()">Jegyzet törlése</button>
+    </a>
+  </div>
+  <div *ngIf="!modify" class="container">
+    <a routerLink="/new-note-group">
+      <button mat-flat-button color="primary" class="center">Új jegyzet csoport</button>
     </a>
   </div>
   <app-modify-note *ngIf="modify" [note]="note"></app-modify-note>
   <div *ngIf="modify" class="container">
-    <button (click)="saveModifiedNote()" id="saveButton"  mat-flat-button color="primary" class="center"> Módosítás mentése</button>    
+    <button (click)="saveModifiedNote()" id="saveButton" mat-flat-button color="primary" class="center"> Módosítás mentése</button>
   </div>
 </div>
 
