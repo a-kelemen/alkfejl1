@@ -29,6 +29,7 @@ export class NavigationComponent implements OnInit {
     this.selectedGroup = group;
     //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
     this.notes = this.selectedGroup.notes;
+
     this.sortNotes();
   }
 
@@ -49,10 +50,10 @@ export class NavigationComponent implements OnInit {
 
   sortNotesByDate(): void {
     this.notes.sort((a, b) => {
-      if (a.creationTime > b.creationTime) {
+      if (a.convertedCreationTime > b.convertedCreationTime) {
         return -1;
       }
-      else if (a.creationTime <= b.creationTime) {
+      else if (a.convertedCreationTime <= b.convertedCreationTime) {
         return 1;
       }
       else {
@@ -126,19 +127,21 @@ export class NavigationComponent implements OnInit {
 
     this.noteGroups = await this.noteService.getNoteGroups();
     if (this.noteGroups[0]) {
-      console.log(this.noteGroups);
       if (noteGroupId) {
         this.selectedGroup = this.noteGroups.find(noteGroup => noteGroup.groupId === noteGroupId);
       }
       else {
         this.selectedGroup = this.noteGroups[0];
+        console.log(this.noteGroups);
       }
 
       //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
       if (this.selectedGroup.notes) {
         this.notes = this.selectedGroup.notes;
+        this.convertDate();
 
-        if (this.notes) {
+        if (this.notes[0]) {
+
           this.sortByImpNotDat = true;
           this.sortNotes();
           if (noteId) {
@@ -153,6 +156,18 @@ export class NavigationComponent implements OnInit {
       }
     }
 
+  }
+
+  convertDate(): void {
+    for (let i = 0; i < this.notes.length; i++) {
+      let note = this.notes[i];
+      let splitDate: string[] = note.creationTime.split(' ');
+      this.notes[i].convertedCreationTime = new Date(splitDate[0]);
+      
+
+      
+      
+    }
   }
 
 }

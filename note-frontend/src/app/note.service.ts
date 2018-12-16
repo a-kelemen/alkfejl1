@@ -49,77 +49,43 @@ export class NoteService {
       return [];
     }
     */
-    let token: string = this.authService.getToken();
-    httpOptions.headers =
-      httpOptions.headers.set(
-        'Authorization',
-        `Basic ${token}`
-      );
+
     return this.http.get<Note[]>(`${this.noteGroupsUrl}/${noteGroupId}/notes`).toPromise();
   }
 
     getNoteGroups(): Promise<NoteGroup[]> {
       //return this.noteGroups;
-      let token: string = this.authService.getToken();
-      httpOptions.headers =
-        httpOptions.headers.set(
-          'Authorization',
-          `Basic ${token}`
-        );
+
       return this.http.get<NoteGroup[]>(this.noteGroupsUrl, httpOptions).toPromise();
     }
 
     getAllLabels(): Promise<Label[]> {
       //return this.labels;
-      let token: string = this.authService.getToken();
-      httpOptions.headers =
-        httpOptions.headers.set(
-          'Authorization',
-          `Basic ${token}`
-        );
+
       return this.http.get<Label[]>(this.labelsUrl, httpOptions).toPromise();
     }
 
     getNoteLabels(id: number): Promise<Label[]>{
       //return this.notes1[0].labels;
-      let token: string = this.authService.getToken();
-      httpOptions.headers =
-        httpOptions.headers.set(
-          'Authorization',
-          `Basic ${token}`
-        );
+
       return this.http.get<Label[]>(`${this.labelsUrl}/${id})`, httpOptions).toPromise();
 
     }
 
     getUsers(): Promise<User[]> {
       //return this.users;
-      let token: string = this.authService.getToken();
-      httpOptions.headers =
-        httpOptions.headers.set(
-          'Authorization',
-          `Basic ${token}`
-        );
+
       return this.http.get<User[]>(this.usersUrl, httpOptions).toPromise();
     }
 
-  newNote(note: Note): Promise<Note> {
-    let token: string = this.authService.getToken();
-    httpOptions.headers =
-      httpOptions.headers.set(
-        'Authorization',
-        `Basic ${token}`
-      );
-      return this.http.post<Note>(this.notesUrl, note, httpOptions).toPromise();
+  newNote(noteGroupId: number, note: Note): Promise<Note> {
+    note.noteImportance = 4;
+    note.isActual = true;
+    return this.http.post<Note>(`${this.noteGroupsUrl}/${noteGroupId}/notes`, note, httpOptions).toPromise();
     }
 
   newNoteGroup(noteGroup: NoteGroup): Promise<NoteGroup> {
-    let token: string = this.authService.getToken();
-    httpOptions.headers =
-      httpOptions.headers.set(
-        'Authorization',
-        `Basic ${token}`
-      );
+
       return this.http.post<NoteGroup>(this.noteGroupsUrl, noteGroup, httpOptions).toPromise();
     
     }

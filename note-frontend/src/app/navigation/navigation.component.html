@@ -1,10 +1,10 @@
 
 <div class="componentContainer">
-  <div *ngIf="noteGroups">
+  <div>
     <span *ngFor="let noteGroup of noteGroups" class="groupnames mat-title"
-          [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.groupname}} </span>
+          [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.noteGroupName}} </span>
   </div>
-  <div *ngIf="notes">
+  <div >
     <span *ngFor="let note of notes" class="noteNames mat-title"
           [class.selected]="note === selectedNote" (click)="onSelectNote(note)"> {{note.noteTitle}} </span>
   </div>

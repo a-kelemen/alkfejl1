@@ -1,6 +1,6 @@
 <div *ngIf="noteGroups">
   <span *ngFor="let noteGroup of noteGroups" class="groupnames"
-        [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)">{{noteGroup.groupname}}</span>
+        [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.noteGroupName}} </span>
 </div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -8,7 +8,8 @@
   jegyzet címe<br>
   <input id="noteTitle" type=text formControlName="noteTitle" required><br />
   jegyzet szövege<br>
-  <textarea id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea>
+  <textarea id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea><br />
+  <input type="number" formControlName="noteImportance" required><br />
 
     <button (click)="submit" [disabled]="form.invalid"> Új jegyzet mentése</button>
 

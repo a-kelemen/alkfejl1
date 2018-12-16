@@ -69,4 +69,6 @@ export class NoteBrowserComponent implements OnInit {
   addNewNoteGroup():void {
     this.router.navigate(['/new-note-group']);
   }
+
+
 }

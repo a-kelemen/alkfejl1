@@ -6,10 +6,10 @@
       <input matInput *ngIf="modify" id="noteTitle" class="noteTitle" type=text [(ngModel)]="titleValue">
     </div>
   </div>
-  <div class="container textAreaContainer">
+  <div class="container textAreaContainer" *ngIf="note">
     <textarea [readOnly]="isReadOnly" id="modifyArea" class="noteTextArea center" [(ngModel)]="textValue"></textarea>
   </div>
-  <h2 class="mat-h3">Létrehozás ideje: {{note.creationTime | date:'dd-MM-yy hh-mm' }} </h2>
+  <h2 class="mat-h3" *ngIf="note">Létrehozás ideje: {{note.convertedCreationTime | date:'dd-MM-yy hh-mm' }} </h2>
   <div *ngIf="!modify" class="container">
     <a routerLink="/new-note">
       <button mat-flat-button color="primary" class="center">Új jegyzet</button>
