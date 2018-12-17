@@ -17,16 +17,16 @@
   </a>
 
 
-  <div id="sortradio" class="container">
+  <div id="sortradio" class="container" *ngIf="selectedNote">
     <input id="byImportance" type="radio" checked name="sort" (click)="setSortByImportance()">
     <label for="byImportance" class="mat-h3">Jegyzetek rendezése fontosság szerint</label>
     <input id="byDate" type="radio" name="sort" (click)="setSortByDate()">
     <label for="byDate" class="mat-h3">Jegyzetek rendezése dátum szerint</label>
   </div>
-  <button mat-flat-button color="primary" (click)="switchToPrevNote()" id="prevButton">
+  <button mat-flat-button color="primary" (click)="switchToPrevNote()" id="prevButton" *ngIf="selectedNote">
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
-  <button mat-flat-button color="primary" (click)="switchToNextNote()" id="nextButton">
+  <button mat-flat-button color="primary" (click)="switchToNextNote()" id="nextButton" *ngIf="selectedNote">
     <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
 </div>

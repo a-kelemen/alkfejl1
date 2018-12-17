@@ -27,7 +27,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.setSelectedNote();
-    this.refresh();
+    //this.refresh();
   }
 
   onSelectGroup(group: NoteGroup): void {
