@@ -78,17 +78,18 @@ export class NoteService {
       return this.http.get<User[]>(this.usersUrl, httpOptions).toPromise();
     }
 
-  newNote(noteGroupId: number, note: Note): Promise<Note> {
-    note.noteImportance = 4;
-    note.isActual = true;
-    return this.http.post<Note>(`${this.noteGroupsUrl}/${noteGroupId}/notes`, note, httpOptions).toPromise();
-    }
+    newNote(noteGroupId: number, note: Note): Promise<Note> {
+      note.noteImportance = 4;
+      note.isActual = true;
+      return this.http.post<Note>(`${this.noteGroupsUrl}/${noteGroupId}/notes`, note, httpOptions).toPromise();
+      }
 
-  newNoteGroup(noteGroup: NoteGroup): Promise<NoteGroup> {
+    newNoteGroup(noteGroup: NoteGroup): Promise<NoteGroup> {
 
-      return this.http.post<NoteGroup>(this.noteGroupsUrl, noteGroup, httpOptions).toPromise();
+        return this.http.post<NoteGroup>(this.noteGroupsUrl, noteGroup, httpOptions).toPromise();
     
     }
+
 
     /*editNote(noteGroupId: number, note: Note): Promise<Note> {
       note.isActual = true;
@@ -104,6 +105,11 @@ export class NoteService {
       ).toPromise();
     }
 
-    
+  deleteNote(id: number): Promise<Note> {
+    return this.http.delete<Note>(`${this.notesUrl}/${id}`, httpOptions).toPromise();
+  }
+
+
+
   
 }

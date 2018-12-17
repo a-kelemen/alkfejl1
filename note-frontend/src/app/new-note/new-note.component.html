@@ -21,12 +21,14 @@
       <textarea matInput id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea>
     </mat-form-field>
 
+
     <div class="container">
       <button mat-flat-button color="primary" class="center" (click)="onSubmit()" [disabled]="form.invalid">Új jegyzet mentése</button>
     </div>
     <div class="container">
       <button mat-flat-button color="primary" class="center" (click)="goBack()" >Vissza a jegyzetekhez </button>
     </div>
+
 
   </form>
 </div>

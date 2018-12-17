@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../Note';
 import { Router } from '@angular/router';
+
 import { NoteGroup } from '../NoteGroup';
 import { NoteService } from '../note.service';
 import { FormBuilder } from '@angular/forms';
+
 
 
 @Component({
@@ -22,7 +24,9 @@ export class NoteBrowserComponent implements OnInit {
   textValue:string;
   titleValue:string;
 
+
   constructor(private noteService: NoteService, private fb: FormBuilder, private router: Router) { }
+
 
   ngOnInit() {
     if (this.note) {
@@ -69,8 +73,8 @@ export class NoteBrowserComponent implements OnInit {
   }
 
   deleteNote(): void {
-    console.log("httpvel jegyzet törlése");
-    //this.router.navigate(['/note-browser']);
+    this.noteService.deleteNote(this.note.noteId);
+    this.router.navigate(['/note-browser']);
   }
 
   addNewNoteGroup():void {
