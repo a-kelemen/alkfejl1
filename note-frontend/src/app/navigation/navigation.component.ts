@@ -27,6 +27,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.setSelectedNote();
+    this.refresh();
   }
 
   onSelectGroup(group: NoteGroup): void {
@@ -174,9 +175,11 @@ export class NavigationComponent implements OnInit {
   }
 
   async refresh() {
+    console.log("refresh()");
     this.noteGroups = await this.noteService.getNoteGroups();
-    this.notes = this.selectedGroup.notes;
     this.selectedGroup = this.noteGroups[0];
+    this.notes = this.selectedGroup.notes;
+    
     
   }
 

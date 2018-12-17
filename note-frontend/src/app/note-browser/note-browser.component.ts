@@ -43,10 +43,18 @@ export class NoteBrowserComponent implements OnInit {
       this.modify = false;
       this.textValue = this.note.noteText;
       this.titleValue = this.note.noteTitle;
-      document.getElementById("modifyArea").setAttribute("readonly", "");
-      document.getElementById("modifyArea").classList.add('noBorder');
+      this.delay(300).then(any=>{
+        document.getElementById("modifyArea").setAttribute("readonly", "");
+        document.getElementById("modifyArea").classList.add('noBorder');
+   });
+      
+
     }
   }
+
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log(""));
+}
 
 
   modifyNote(){
