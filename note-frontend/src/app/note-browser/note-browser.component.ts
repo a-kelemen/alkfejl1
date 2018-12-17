@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../Note';
 import { Router } from '@angular/router';
+import { NoteGroup } from '../NoteGroup';
+import { NoteService } from '../note.service';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -12,13 +15,14 @@ export class NoteBrowserComponent implements OnInit {
 
 
   @Input() note: Note;
+  @Input() group: NoteGroup;
   modify: boolean = false;
   isReadOnly: boolean = false;
   
   textValue:string;
   titleValue:string;
 
-  constructor(private router: Router) { }
+  constructor(private noteService: NoteService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     if (this.note) {
@@ -50,14 +54,17 @@ export class NoteBrowserComponent implements OnInit {
 
   saveModifiedNote(): void{
     if (this.note) {
-      var titleText = ((document.getElementById("noteTitle") as HTMLInputElement).value);
+      let titleText:string = ((document.getElementById("noteTitle") as HTMLInputElement).value);
       //console.log("title: ", titleText);
-      var areaText = ((document.getElementById("modifyArea") as HTMLInputElement).value);
+      let areaText:string = ((document.getElementById("modifyArea") as HTMLInputElement).value);
       //console.log("textarea: ", areaText);
       console.log("save");
       this.note.noteTitle = titleText;
       this.note.noteText = areaText;
+      var id = this.note.noteId;
       this.modifyNote();
+      this.noteService.modifyNote(id, this.note);
+      //this.router.navigate(["/note-browser"]);
     }
   }
 

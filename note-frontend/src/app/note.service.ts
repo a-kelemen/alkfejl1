@@ -90,6 +90,19 @@ export class NoteService {
     
     }
 
+    /*editNote(noteGroupId: number, note: Note): Promise<Note> {
+      note.isActual = true;
+      return this.http.post<Note>(`${this.noteGroupsUrl}/${noteGroupId}/notes`, note, httpOptions).toPromise();
+    }
+    */
+
+    modifyNote(id: number, note: Note): Promise<Note> {
+      return this.http.put<Note>(
+        `${this.notesUrl}/${id}`,
+        note,
+        httpOptions
+      ).toPromise();
+    }
 
     
   

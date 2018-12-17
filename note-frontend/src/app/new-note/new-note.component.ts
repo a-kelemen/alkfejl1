@@ -48,6 +48,7 @@ export class NewNoteComponent implements OnInit {
   }
 
   onSelectGroup(noteGroup :NoteGroup): void {
+    console.log("selected: "+ noteGroup);
     this.selectedGroup = noteGroup;
     
   }

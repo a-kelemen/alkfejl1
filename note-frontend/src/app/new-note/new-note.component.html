@@ -1,31 +1,32 @@
-<div *ngIf="noteGroups">
-  <span *ngFor="let noteGroup of noteGroups" class="groupnames"
-        [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.noteGroupName}} </span>
+<div class="componentContainer">
+  <div *ngIf="noteGroups">
+    <span *ngFor="let noteGroup of noteGroups" class="groupnames mat-title"
+          [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.noteGroupName}} </span>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+    <h2 class="mat-h3">Új Jegyzet</h2>
+    <mat-form-field class="center">
+        <mat-label>jegyzet címe</mat-label>
+      <input matInput id="noteTitle" type=text formControlName="noteTitle" required>
+    </mat-form-field>
+    <mat-form-field class="center">
+        <mat-label>jegyzet fontossága</mat-label>
+      <input matInput type="number" formControlName="noteImportance" required>
+    </mat-form-field>
+
+    <mat-form-field class="center">
+        <mat-label>jegyzet szövege</mat-label>
+      <textarea matInput id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea>
+    </mat-form-field>
+
+    <div class="container">
+      <button mat-flat-button color="primary" class="center" (click)="onSubmit()" [disabled]="form.invalid">Új jegyzet mentése</button>
+    </div>
+    <div class="container">
+      <button mat-flat-button color="primary" class="center" (click)="goBack()" >Vissza a jegyzetekhez </button>
+    </div>
+
+  </form>
 </div>
-
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
- 
-  <input type="number" formControlName="noteImportance" required><br />
-
-  <h2 class="mat-h3">Új Jegyzet</h2>
-  <h2 class="mat-h3">jegyzet címe</h2>
-  <mat-form-field class="center">
-    <input matInput id="noteTitle" type=text formControlName="noteTitle" required>
-  </mat-form-field>
-  <mat-form-field class="center">
-    <input matInput type="number" formControlName="noteImportance" required>
-  </mat-form-field>
-
-  <h2 class="mat-h3">jegyzet szövege</h2>
-  <mat-form-field class="center">
-    <textarea matInput id="modifyArea" class="noteTextArea" formControlName="noteText" required></textarea>
-  </mat-form-field>
-
-  <div class="center">
-    <button mat-flat-button color="primary" (click)="submit" [disabled]="form.invalid">Új jegyzet mentése</button>
-  </div>
-  <div class="center">
-    <button mat-flat-button color="primary" type="goBack()" >Vissza a jegyzetekhez </button>
-  </div>
-
-</form>
