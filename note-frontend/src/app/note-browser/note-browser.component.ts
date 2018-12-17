@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NoteGroup } from '../NoteGroup';
 import { NoteService } from '../note.service';
 import { FormBuilder } from '@angular/forms';
+import { Label } from '../Label';
 
 
 
@@ -20,6 +21,7 @@ export class NoteBrowserComponent implements OnInit {
   @Input() group: NoteGroup;
   modify: boolean = false;
   isReadOnly: boolean = false;
+  newLabels: Array<Label> = [];
   
   textValue:string;
   titleValue:string;
@@ -65,6 +67,8 @@ export class NoteBrowserComponent implements OnInit {
       console.log("save");
       this.note.noteTitle = titleText;
       this.note.noteText = areaText;
+      this.selectLabels(this.newLabels);
+      this.note.labels = this.newLabels;
       var id = this.note.noteId;
       this.modifyNote();
       this.noteService.modifyNote(id, this.note);
@@ -79,6 +83,13 @@ export class NoteBrowserComponent implements OnInit {
 
   addNewNoteGroup():void {
     this.router.navigate(['/new-note-group']);
+  }
+  selectLabels(newLabels:  Label[]) {
+    this.newLabels = newLabels;
+    //console.log("labels in note browser:");
+    //for(let i=0; i<this.newLabels.length; i++){
+    //  console.log(this.newLabels[i].labelId);}
+    
   }
 
 

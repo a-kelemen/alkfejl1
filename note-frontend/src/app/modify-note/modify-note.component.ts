@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NoteService } from '../note.service';
 import { Label } from '../Label';
 import { Note } from '../Note';
+
 
 @Component({
   selector: 'app-modify-note',
@@ -12,7 +13,12 @@ export class ModifyNoteComponent implements OnInit {
   @Input() note: Note;
   allLabels: Label[];
   noteLabels: Label[];
-  newLabels: Array<Label> = [];
+  newLabels: Label[];
+  @Output() selectLabels = new EventEmitter<any>();
+
+  onSelectLabels(newLabels:  Label[]) {
+    this.selectLabels.emit(newLabels);
+  }
 
   constructor(
     private noteService: NoteService
@@ -46,8 +52,8 @@ export class ModifyNoteComponent implements OnInit {
     });
     console.log("selected labels:");
     for(let i=0; i<this.newLabels.length; i++){
-      console.log(this.newLabels[i].labelId);
-  }
+      console.log(this.newLabels[i].labelId);}
+    this.onSelectLabels(this.newLabels);
     
   }
     

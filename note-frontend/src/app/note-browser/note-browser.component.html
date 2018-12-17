@@ -28,7 +28,7 @@
       <button mat-flat-button color="primary" class="center">Új jegyzet csoport</button>
     </a>
   </div>
-  <app-modify-note *ngIf="modify" [note]="note"></app-modify-note>
+  <app-modify-note *ngIf="modify" [note]="note" (selectLabels)="selectLabels($event)"></app-modify-note>
   <div *ngIf="modify" class="container">
     <button (click)="saveModifiedNote()" id="saveButton" mat-flat-button color="primary" class="center"> Módosítás mentése</button>
   </div>
