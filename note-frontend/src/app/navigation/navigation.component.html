@@ -3,11 +3,11 @@
   <button mat-flat-button color="primary" (click)="logout()">Kijelentkezés</button>
   <div>
     <span *ngFor="let noteGroup of noteGroups" class="groupnames mat-title"
-          [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)">{{noteGroup.noteGroupName}}</span>
+          [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.noteGroupName}} </span>
   </div>
   <div>
     <span *ngFor="let note of notes" class="noteNames mat-title"
-          [class.selected]="note === selectedNote" (click)="onSelectNote(note)">{{note.noteTitle}}</span>
+          [class.selected]="note === selectedNote" (click)="onSelectNote(note)"> {{note.noteTitle}} </span>
   </div>
   <div class="container">
     <button mat-flat-button color="primary" (click)="refresh()">Frissítés</button>
