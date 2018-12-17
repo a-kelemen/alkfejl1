@@ -86,3 +86,13 @@ amikhez hozzá lett rendelve
 
 ## Osztálydiagram
 ![uml_diagram](https://github.com/a-kelemen/alkfejl1/blob/master/uml.png)
+
+## Képernyőtervek
+* Login képernyő
+![login](https://github.com/a-kelemen/alkfejl1/blob/master/login.PNG)
+* Regisztráció
+![register](https://github.com/a-kelemen/alkfejl1/blob/master/register.PNG)
+* Főoldal
+![main](https://github.com/a-kelemen/alkfejl1/blob/master/mainpage.PNG)
+* Új jegyzet / Módosítás
+![neweditpage](https://github.com/a-kelemen/alkfejl1/blob/master/neweditpage.PNG)
