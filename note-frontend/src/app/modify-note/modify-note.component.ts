@@ -40,7 +40,7 @@ export class ModifyNoteComponent implements OnInit {
   }
 
   changed(event){
-    //console.log("changed:", event.target.id);
+    console.log("changed:", event.target.id);
     this.newLabels = [];
     this.allLabels.forEach(item => {
       var checked = ((document.getElementById(String(item.labelId)) as HTMLInputElement).checked);
@@ -56,6 +56,7 @@ export class ModifyNoteComponent implements OnInit {
     this.onSelectLabels(this.newLabels);
     
   }
+
     
 
 }

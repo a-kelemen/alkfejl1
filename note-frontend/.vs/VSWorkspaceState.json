@@ -7,10 +7,10 @@
     "\\src\\app\\login",
     "\\src\\app\\modify-note",
     "\\src\\app\\navigation",
-    "\\src\\app\\new-note",
-    "\\src\\app\\new-note-group",
-    "\\src\\app\\note-browser"
+    "\\src\\app\\note-browser",
+    "\\src\\app\\registration",
+    "\\src\\app\\search"
   ],
-  "SelectedNode": "\\src\\app\\NoteGroup.ts",
+  "SelectedNode": "\\src\\app\\modify-note\\modify-note.component.html",
   "PreviewInSolutionExplorer": false
 }

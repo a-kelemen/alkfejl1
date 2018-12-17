@@ -19,6 +19,8 @@ export class NavigationComponent implements OnInit {
   selectedNoteId: number;
   sortByImpNotDat: boolean;
 
+
+
   constructor(private noteService: NoteService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class NavigationComponent implements OnInit {
     this.selectedGroup = group;
     //this.notes = this.noteService.getNotes(this.selectedGroup.groupId);
     this.notes = this.selectedGroup.notes;
+    this.convertDate();
 
     this.sortNotes();
   }
@@ -50,10 +53,10 @@ export class NavigationComponent implements OnInit {
 
   sortNotesByDate(): void {
     this.notes.sort((a, b) => {
-      if (a.created_at > b.created_at) {
+      if (a.convertedCreated_at > b.convertedCreated_at) {
         return -1;
       }
-      else if (a.created_at <= b.created_at) {
+      else if (a.convertedCreated_at <= b.convertedCreated_at) {
         return 1;
       }
       else {
@@ -158,12 +161,13 @@ export class NavigationComponent implements OnInit {
   }
 
   convertDate(): void {
+
     for (let i = 0; i < this.notes.length; i++) {
       let note = this.notes[i];
-      console.log(note.created_at);
-      let dateToSplit: string = note.created_at;
-      let splitDate: string[] = dateToSplit.split(' ');
 
+      //let dateToSplit: string = note.created_at;
+      //let splitDate: string[] = dateToSplit.split('T');
+      note.convertedCreated_at = new Date(note.created_at);
     }
   }
 

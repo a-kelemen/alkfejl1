@@ -17,6 +17,7 @@ export class NewNoteComponent implements OnInit {
   textValue: string;
   noteGroups: NoteGroup[];
   selectedGroup: NoteGroup;
+  noteImportanceNumber: number;
   
   constructor(private noteService: NoteService, private fb: FormBuilder, private router: Router) { }
 
@@ -28,6 +29,7 @@ export class NewNoteComponent implements OnInit {
 
   async ngOnInit() {
     this.noteGroups = await this.noteService.getNoteGroups();
+    this.selectedGroup = this.noteGroups[0];
   }
 
   get noteTitle() { return this.form.get('noteTitle'); }
@@ -37,7 +39,8 @@ export class NewNoteComponent implements OnInit {
   onSubmit(): void {
     let noteTitle: string = this.noteTitle.value;
     let noteText: string = this.noteText.value;
-    this.noteService.newNote(this.selectedGroup.groupId, { noteTitle, noteText } as Note);
+    let noteImportance: number = this.noteImportanceNumber;
+    this.noteService.newNote(this.selectedGroup.groupId, { noteTitle, noteText, noteImportance } as Note);
     this.router.navigate(["/note-browser"]);
   }
 
@@ -51,6 +54,11 @@ export class NewNoteComponent implements OnInit {
     console.log("selected: "+ noteGroup);
     this.selectedGroup = noteGroup;
     
+  }
+
+  changed(event): void {
+    this.noteImportanceNumber = this.form.get('noteImportance').value;
+    console.log(this.noteImportanceNumber);
   }
 
 }

@@ -78,8 +78,7 @@ export class NoteService {
       return this.http.get<User[]>(this.usersUrl, httpOptions).toPromise();
     }
 
-    newNote(noteGroupId: number, note: Note): Promise<Note> {
-      note.noteImportance = 4;
+  newNote(noteGroupId: number, note: Note): Promise<Note> {
       note.isActual = true;
       return this.http.post<Note>(`${this.noteGroupsUrl}/${noteGroupId}/notes`, note, httpOptions).toPromise();
       }
