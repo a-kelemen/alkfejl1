@@ -1,6 +1,11 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-<input type="text" formControlName="noteGroupName" required>
-  <br>
-  <button type="submit" [disabled]="form.invalid">Új jegyzet csoport</button>
-  <button (click)="back()">Vissza a jegyzetekhez</button>
-</form>
+<div class="componentContainer">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="noteGroupName" class="inputfield" required>
+    <div class="container" >
+      <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Új jegyzet csoport</button>
+    </div>
+    <div  class="container">
+      <button mat-flat-button color="primary" (click)="back()">Vissza a jegyzetekhez</button>
+    </div>
+  </form>
+</div>

@@ -7,7 +7,7 @@ import { NoteGroup } from '../NoteGroup';
 @Component({
   selector: 'app-new-note-group',
   templateUrl: './new-note-group.component.html',
-  styleUrls: ['./new-note-group.component.css']
+  styleUrls: ['./new-note-group.component.css', '../style.css']
 })
 export class NewNoteGroupComponent implements OnInit {
 

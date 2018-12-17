@@ -8,15 +8,19 @@
     <span *ngFor="let note of notes" class="noteNames mat-title"
           [class.selected]="note === selectedNote" (click)="onSelectNote(note)"> {{note.noteTitle}} </span>
   </div>
-  <button mat-flat-button color="primary" (click)="refresh()">Frissítés</button>
+  <div class="container">
+    <button mat-flat-button color="primary" (click)="refresh()">Frissítés</button>
+  </div>
   <a routerLink="/search">
     <button mat-flat-button color="primary" class="center">Jegyzet keresése</button>
   </a>
 
   
-  <div id="sortradio">
-    <input type="radio" checked name="sort" (click)="setSortByImportance()">Jegyzetek rendezése fontosság szerint<br>
-    <input type="radio" name="sort" (click)="setSortByDate()">Jegyzetek rendezése dátum szerint
+  <div id="sortradio" class="container"> 
+    <input id="byImportance" type="radio" checked name="sort" (click)="setSortByImportance()" >
+    <label for="byImportance" class="mat-h3">Jegyzetek rendezése fontosság szerint</label>
+    <input id="byDate" type="radio" name="sort" (click)="setSortByDate()">
+    <label for="byDate" class="mat-h3">Jegyzetek rendezése dátum szerint</label>
   </div>
   <button mat-flat-button color="primary" (click)="switchToPrevNote()" id="prevButton">
       <mat-icon>keyboard_arrow_left</mat-icon>

@@ -7,7 +7,7 @@ import { rootRoute } from '@angular/router/src/router_module';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css', '../style.css']
 })
 export class SearchComponent implements OnInit {
 

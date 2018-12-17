@@ -44,6 +44,7 @@ export class NoteBrowserComponent implements OnInit {
       this.textValue = this.note.noteText;
       this.titleValue = this.note.noteTitle;
       document.getElementById("modifyArea").setAttribute("readonly", "");
+      document.getElementById("modifyArea").classList.add('noBorder');
     }
   }
 
@@ -52,9 +53,11 @@ export class NoteBrowserComponent implements OnInit {
     if (!this.modify){
       this.modify = true;
       document.getElementById("modifyArea").removeAttribute("readonly");
+      document.getElementById("modifyArea").classList.remove('noBorder');
     } else{
       this.modify = false;
       document.getElementById("modifyArea").setAttribute("readonly", "");
+      document.getElementById("modifyArea").classList.add('noBorder');
     }
   }
 

@@ -21,12 +21,18 @@
   margin:0 auto;
 }
 
-.noteTitle{
-  padding-top: 30px;
-  
-  height:50%;
-}
 
+noteLabel{
+  border:0;
+  font: 400 22px Arial;
+}
+.noBorder{
+  border:0;
+}
 #titleContainer{
   vertical-align: bottom;
+}
+
+.mainButton{
+  width:170px;
 }
