@@ -17,6 +17,8 @@ export class AdminPageComponent implements OnInit {
   users: User[];
   selectedNote: Note;
   noteIsSelected: boolean;
+  selectedGroup: NoteGroup;
+  noteGroups: NoteGroup[];
 
   constructor(private noteService: NoteService, private router: Router) { }
 
@@ -27,15 +29,23 @@ export class AdminPageComponent implements OnInit {
   async getUsers() {
     this.users = await this.noteService.getUsers();
     this.noteIsSelected = false;
+     
   }
 
   selectNote(note: Note): void {
     this.selectedNote = note;
     this.noteIsSelected = true;
+    
   }
 
   deleteNote(): void {
-    console.log("http kéréssel törlés");
+    this.noteService.deleteNote(this.selectedNote.noteId);
+    //this.router.navigate(['/admin-page']);
+
+  }
+
+  refresh(): void {
     this.router.navigate(['/admin-page']);
+    this.getUsers();
   }
 }

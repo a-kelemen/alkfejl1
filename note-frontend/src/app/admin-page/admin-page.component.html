@@ -3,7 +3,7 @@
   <ul class="users">
     <li *ngFor="let user of users; index as i">{{user.username}}
       <ul>
-        <li *ngFor="let group of user.noteGroups">{{group.groupname}}
+        <li *ngFor="let group of user.noteGroups">{{group.noteGroupName}}
           <ul>
             <li *ngFor="let note of group.notes" class="noteNames" [class.selected]="note === selectedNote" (click)="selectNote(note)"> {{note.noteTitle}} 
             </li>
@@ -17,5 +17,6 @@
   <h2>{{selectedNote.creationTime}}</h2>
   <h2>{{selectedNote.noteTitle}}</h2>
   <textarea>{{selectedNote.noteText}}</textarea><br>
-  <button (click)="deleteNote()">Jegyzet törlése</button>
+  <button (click)="deleteNote()">Jegyzet törlése</button><br />
+  <button (click)="refresh()">Frissítés</button>
 </div>

@@ -1,12 +1,13 @@
 
 <div class="componentContainer">
+  <button mat-flat-button color="primary" (click)="logout()">Kijelentkezés</button>
   <div>
     <span *ngFor="let noteGroup of noteGroups" class="groupnames mat-title"
-          [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)"> {{noteGroup.noteGroupName}} </span>
+          [class.selected]="noteGroup === selectedGroup" (click)="onSelectGroup(noteGroup)">{{noteGroup.noteGroupName}}</span>
   </div>
-  <div >
+  <div>
     <span *ngFor="let note of notes" class="noteNames mat-title"
-          [class.selected]="note === selectedNote" (click)="onSelectNote(note)"> {{note.noteTitle}} </span>
+          [class.selected]="note === selectedNote" (click)="onSelectNote(note)">{{note.noteTitle}}</span>
   </div>
   <div class="container">
     <button mat-flat-button color="primary" (click)="refresh()">Frissítés</button>
@@ -15,18 +16,18 @@
     <button mat-flat-button color="primary" class="center">Jegyzet keresése</button>
   </a>
 
-  
-  <div id="sortradio" class="container"> 
-    <input id="byImportance" type="radio" checked name="sort" (click)="setSortByImportance()" >
+
+  <div id="sortradio" class="container">
+    <input id="byImportance" type="radio" checked name="sort" (click)="setSortByImportance()">
     <label for="byImportance" class="mat-h3">Jegyzetek rendezése fontosság szerint</label>
     <input id="byDate" type="radio" name="sort" (click)="setSortByDate()">
     <label for="byDate" class="mat-h3">Jegyzetek rendezése dátum szerint</label>
   </div>
   <button mat-flat-button color="primary" (click)="switchToPrevNote()" id="prevButton">
-      <mat-icon>keyboard_arrow_left</mat-icon>
+    <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
   <button mat-flat-button color="primary" (click)="switchToNextNote()" id="nextButton">
-      <mat-icon>keyboard_arrow_right</mat-icon>
+    <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
 </div>
 

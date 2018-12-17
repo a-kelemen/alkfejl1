@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { NoteGroup } from '../NoteGroup';
 import { Note } from '../Note';
 import { NoteService } from '../note.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-navigation',
@@ -21,7 +23,7 @@ export class NavigationComponent implements OnInit {
 
 
 
-  constructor(private noteService: NoteService, private route: ActivatedRoute) { }
+  constructor(private noteService: NoteService, private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.setSelectedNote();
@@ -174,7 +176,13 @@ export class NavigationComponent implements OnInit {
   async refresh() {
     this.noteGroups = await this.noteService.getNoteGroups();
     this.notes = this.selectedGroup.notes;
+    this.selectedGroup = this.noteGroups[0];
     
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(["/login"]);
   }
 
 }
